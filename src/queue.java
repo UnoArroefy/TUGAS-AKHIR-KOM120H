@@ -42,7 +42,7 @@ public class queue extends javax.swing.JFrame {
         JumlahAntrian = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        PanggilNomorAntrain = new javax.swing.JLabel();
+        PanggilNomorAntrian = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         ProsesAntrian = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -62,12 +62,6 @@ public class queue extends javax.swing.JFrame {
         jDialog1.setMaximumSize(new java.awt.Dimension(200, 200));
         jDialog1.setResizable(false);
         jDialog1.setSize(new java.awt.Dimension(400, 300));
-
-        Nama.setText("Nama                            :");
-
-        NomorAntrian.setText("Nomor Antrian            :");
-
-        EstimasiWaktu.setText("Estimasi Waktu            :");
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -139,8 +133,8 @@ public class queue extends javax.swing.JFrame {
 
         jLabel5.setText("Total Antrian");
 
-        PanggilNomorAntrain.setBackground(new java.awt.Color(255, 255, 204));
-        PanggilNomorAntrain.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanggilNomorAntrian.setBackground(new java.awt.Color(255, 255, 204));
+        PanggilNomorAntrian.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel7.setText("Panggil Nomor Antrian");
 
@@ -255,7 +249,7 @@ public class queue extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(PanggilNomorAntrain, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(PanggilNomorAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -287,7 +281,7 @@ public class queue extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanggilNomorAntrain, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanggilNomorAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(ProsesAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -319,6 +313,15 @@ public class queue extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProsesAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProsesAntrianActionPerformed
+        try {
+            queueManager.dequeue();
+            JumlahAntrian.setText(queueManager.size() + "");
+            TotalAntrian.setText(queueManager.size() + "");
+            PanggilNomorAntrian.setText(priority + "");
+        } catch (Error e) {
+            JOptionPane.showMessageDialog(null, "Antrian kosong.");
+        }
+        jTextArea1.setText(queueManager.history());
         // TODO add your handling code here:
     }//GEN-LAST:event_ProsesAntrianActionPerformed
 
@@ -335,19 +338,53 @@ public class queue extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterActionPerformed
-if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()) {
-        // Semua jTextField terisi, tampilkan dialog
-        jDialog1.setVisible(true);
-        
-        // Reset nilai jTextField setelah ditampilkan dialog
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-    } else {
-        // Salah satu atau lebih jTextField kosong, tampilkan pesan
-        JOptionPane.showMessageDialog(null, "Isi data diri terlebih dahulu.");
-    }        // TODO add your handling code here:
+    // Check if all text fields are filled
+        if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()) {
+            try {
+                // Validate if jTextField2 contains a valid number
+                int estimation;
+                int number = Integer.parseInt(jTextField2.getText());
+                // Input is a valid number
+                // Proceed with further actions
+                // Show the dialog
+
+                try {
+                    estimation = queueManager.enqueue(new Patient(jTextField1.getText(), jTextField3.getText(), number), priority);
+                } catch (Error e) {
+                    JOptionPane.showMessageDialog(null, "Antrian sudah penuh.");
+                    return;
+                }
+                
+                PanggilNomorAntrian.setText(priority + "");
+                
+                Nama.setText("Nama                            : " + jTextField1.getText());
+                NomorAntrian.setText("Nomor Antrian            :" + priority++);
+                EstimasiWaktu.setText("Estimasi Waktu            :" + estimation + " menit");
+
+                jDialog1.setVisible(true);
+
+                // Reset text fields after displaying the dialog
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+
+                JumlahAntrian.setText(queueManager.size() + "");
+                TotalAntrian.setText(queueManager.size() + "");
+                jTextArea1.setText(queueManager.history());
+            } catch (NumberFormatException e) {
+                // Input in jTextField2 is not a valid number
+                // Display an error message
+                JOptionPane.showMessageDialog(null, "Usia harus berupa angka.");
+                // Clear the text field
+                jTextField2.setText("");
+            }
+        } else {
+            // One or more text fields are empty, display a message
+            JOptionPane.showMessageDialog(null, "Isi data diri terlebih dahulu.");
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_EnterActionPerformed
+
+
 
     /**
      * @param args the command line arguments
@@ -384,13 +421,16 @@ if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && !jTe
         });
     }
 
+    private int priority = 1;
+    private QueueManager queueManager = new QueueManager(128); // bisa ganti jumlah disini
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Enter;
     private javax.swing.JLabel EstimasiWaktu;
     private javax.swing.JLabel JumlahAntrian;
     private javax.swing.JLabel Nama;
     private javax.swing.JLabel NomorAntrian;
-    private javax.swing.JLabel PanggilNomorAntrain;
+    private javax.swing.JLabel PanggilNomorAntrian;
     private javax.swing.JButton ProsesAntrian;
     private javax.swing.JLabel TotalAntrian;
     private javax.swing.JDialog jDialog1;
