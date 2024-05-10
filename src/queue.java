@@ -38,11 +38,9 @@ public class queue extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        TotalAntrian = new javax.swing.JLabel();
         JumlahAntrian = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        PanggilNomorAntrian = new javax.swing.JLabel();
+        PanggilNomorAntrain = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         ProsesAntrian = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -54,14 +52,20 @@ public class queue extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         Enter = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        BatalkanAntrian = new javax.swing.JButton();
 
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog1.setTitle("Estimasi Antrian");
         jDialog1.setForeground(new java.awt.Color(153, 204, 255));
         jDialog1.setLocation(new java.awt.Point(300, 200));
-        jDialog1.setMaximumSize(new java.awt.Dimension(200, 200));
         jDialog1.setResizable(false);
         jDialog1.setSize(new java.awt.Dimension(400, 300));
+
+        Nama.setText("Nama                            :");
+
+        NomorAntrian.setText("Nomor Antrian            :");
+
+        EstimasiWaktu.setText("Estimasi Waktu            :");
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -116,25 +120,22 @@ public class queue extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setText("Loket");
 
-        TotalAntrian.setBackground(new java.awt.Color(255, 255, 204));
-        TotalAntrian.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         JumlahAntrian.setBackground(new java.awt.Color(255, 255, 204));
+        JumlahAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JumlahAntrian.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setText("Jumlah Antrian");
 
-        jLabel5.setText("Total Antrian");
-
-        PanggilNomorAntrian.setBackground(new java.awt.Color(255, 255, 204));
-        PanggilNomorAntrian.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PanggilNomorAntrain.setBackground(new java.awt.Color(255, 255, 204));
+        PanggilNomorAntrain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanggilNomorAntrain.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel7.setText("Panggil Nomor Antrian");
 
@@ -226,6 +227,15 @@ public class queue extends javax.swing.JFrame {
 
         jLabel8.setText("Input Pasien");
 
+        BatalkanAntrian.setBackground(new java.awt.Color(204, 0, 0));
+        BatalkanAntrian.setForeground(new java.awt.Color(255, 255, 255));
+        BatalkanAntrian.setText("Batalkan Antrian");
+        BatalkanAntrian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BatalkanAntrianActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -244,20 +254,18 @@ public class queue extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TotalAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JumlahAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PanggilNomorAntrain, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(PanggilNomorAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(31, 31, 31)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(ProsesAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BatalkanAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ProsesAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -274,17 +282,15 @@ public class queue extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(JumlahAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TotalAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PanggilNomorAntrain, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanggilNomorAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(ProsesAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(18, 18, 18)
+                .addComponent(BatalkanAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,15 +319,6 @@ public class queue extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProsesAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProsesAntrianActionPerformed
-        try {
-            queueManager.dequeue();
-            JumlahAntrian.setText(queueManager.size() + "");
-            TotalAntrian.setText(queueManager.size() + "");
-            PanggilNomorAntrian.setText(priority + "");
-        } catch (Error e) {
-            JOptionPane.showMessageDialog(null, "Antrian kosong.");
-        }
-        jTextArea1.setText(queueManager.history());
         // TODO add your handling code here:
     }//GEN-LAST:event_ProsesAntrianActionPerformed
 
@@ -338,53 +335,32 @@ public class queue extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterActionPerformed
-    // Check if all text fields are filled
-        if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()) {
-            try {
-                // Validate if jTextField2 contains a valid number
-                int estimation;
-                int number = Integer.parseInt(jTextField2.getText());
-                // Input is a valid number
-                // Proceed with further actions
-                // Show the dialog
-
-                try {
-                    estimation = queueManager.enqueue(new Patient(jTextField1.getText(), jTextField3.getText(), number), priority);
-                } catch (Error e) {
-                    JOptionPane.showMessageDialog(null, "Antrian sudah penuh.");
-                    return;
-                }
-                
-                PanggilNomorAntrian.setText(priority + "");
-                
-                Nama.setText("Nama                            : " + jTextField1.getText());
-                NomorAntrian.setText("Nomor Antrian            :" + priority++);
-                EstimasiWaktu.setText("Estimasi Waktu            :" + estimation + " menit");
-
-                jDialog1.setVisible(true);
-
-                // Reset text fields after displaying the dialog
-                jTextField1.setText("");
-                jTextField2.setText("");
-                jTextField3.setText("");
-
-                JumlahAntrian.setText(queueManager.size() + "");
-                TotalAntrian.setText(queueManager.size() + "");
-                jTextArea1.setText(queueManager.history());
-            } catch (NumberFormatException e) {
-                // Input in jTextField2 is not a valid number
-                // Display an error message
-                JOptionPane.showMessageDialog(null, "Usia harus berupa angka.");
-                // Clear the text field
-                jTextField2.setText("");
-            }
-        } else {
-            // One or more text fields are empty, display a message
-            JOptionPane.showMessageDialog(null, "Isi data diri terlebih dahulu.");
-        }       // TODO add your handling code here:
+if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && !jTextField3.getText().isEmpty()) {
+        // Semua jTextField terisi, tampilkan dialog
+        jDialog1.setVisible(true);
+        
+        // Reset nilai jTextField setelah ditampilkan dialog
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+    } else {
+        // Salah satu atau lebih jTextField kosong, tampilkan pesan
+        JOptionPane.showMessageDialog(null, "Isi data diri terlebih dahulu.");
+    }        // TODO add your handling code here:
     }//GEN-LAST:event_EnterActionPerformed
 
+    private void BatalkanAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatalkanAntrianActionPerformed
+        String nomorAntrianStr = JOptionPane.showInputDialog(null, "Masukkan nomor antrian:", "Batalkan Antrian", JOptionPane.QUESTION_MESSAGE);
 
+    // Konversi nomor antrian dari string ke integer
+    try {
+        int nomorAntrian = Integer.parseInt(nomorAntrianStr);
+        
+    } catch (NumberFormatException e) {
+        // Hika input tidak valid
+        JOptionPane.showMessageDialog(null, "Nomor antrian tidak valid!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BatalkanAntrianActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,24 +397,20 @@ public class queue extends javax.swing.JFrame {
         });
     }
 
-    private int priority = 1;
-    private QueueManager queueManager = new QueueManager(128); // bisa ganti jumlah disini
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BatalkanAntrian;
     private javax.swing.JButton Enter;
     private javax.swing.JLabel EstimasiWaktu;
     private javax.swing.JLabel JumlahAntrian;
     private javax.swing.JLabel Nama;
     private javax.swing.JLabel NomorAntrian;
-    private javax.swing.JLabel PanggilNomorAntrian;
+    private javax.swing.JLabel PanggilNomorAntrain;
     private javax.swing.JButton ProsesAntrian;
-    private javax.swing.JLabel TotalAntrian;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
