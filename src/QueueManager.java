@@ -232,7 +232,7 @@ class Queue {
 
     public int dequeue() {
         if (isEmpty()) {
-            throw new Error("Queue is empty. Cannot dequeue.");
+            throw new Error("Queue is empty. Cannot dequeue. bithc");
         }
         int dequeuedItem = queueArray[front];
         front = (front + 1) % maxSize;
@@ -242,7 +242,7 @@ class Queue {
 
     public int peek() {
         if (isEmpty()) {
-            throw new Error("Queue is empty. Cannot peek.");
+            return -100;
         }
         return queueArray[front];
     }
@@ -306,6 +306,10 @@ public class QueueManager {
     }
 
     public void cancelqueue(int priority) {
+        boolean isPresent = hashMap.containsKey(priority);
+        if (!isPresent) {
+            throw new Error("Not found");
+        }
         while (!queue.isEmpty()) {
             if (queue.peek() == priority) {
                 Patient patient = hashMap.get(priority);
@@ -318,6 +322,10 @@ public class QueueManager {
         while (!temp.isEmpty()){
             queue.enqueue(temp.dequeue());
         }
+    }
+
+    public int peek() {
+        return queue.peek();
     }
 
     public String history() {
