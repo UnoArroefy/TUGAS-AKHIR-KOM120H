@@ -1,1 +1,1 @@
-Main-Class: queueJFrame.queue
+Main-Class: queue

@@ -206,14 +206,14 @@ class HashMap {
     }
 }
 
-class Queue {
+class Antrian {
     private int maxSize;
     private int[] queueArray;
     private int front;
     private int rear;
     private int currentSize;
 
-    public Queue(int maxSize) {
+    public Antrian(int maxSize) {
         this.maxSize = maxSize;
         this.queueArray = new int[maxSize];
         this.front = 0;
@@ -273,15 +273,15 @@ class Queue {
 }
 
 public class QueueManager { 
-    private Queue queue;
-    private Queue temp;
+    private Antrian queue;
+    private Antrian temp;
     private History history;
     private HashMap hashMap;
     private int tmpPriority = 0;
 
     QueueManager(int maxSize) {
-        queue = new Queue(maxSize);
-        temp = new Queue(maxSize);
+        queue = new Antrian(maxSize);
+        temp = new Antrian(maxSize);
         history = new History();
         hashMap = new HashMap();
     }
