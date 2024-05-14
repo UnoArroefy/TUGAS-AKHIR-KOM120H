@@ -53,6 +53,7 @@ public class queue extends javax.swing.JFrame {
         Enter = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         BatalkanAntrian = new javax.swing.JButton();
+        Finish = new javax.swing.JButton();
 
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog1.setTitle("Estimasi Antrian");
@@ -236,6 +237,15 @@ public class queue extends javax.swing.JFrame {
             }
         });
 
+        Finish.setBackground(new java.awt.Color(0, 102, 0));
+        Finish.setForeground(new java.awt.Color(255, 255, 255));
+        Finish.setText("Finish");
+        Finish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinishActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -259,7 +269,7 @@ public class queue extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(55, 55, 55))
                             .addComponent(JumlahAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -268,11 +278,12 @@ public class queue extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(76, 76, 76)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Finish, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BatalkanAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ProsesAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(331, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,10 +304,12 @@ public class queue extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PanggilNomorAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addComponent(ProsesAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BatalkanAntrian, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Finish, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,8 +336,6 @@ public class queue extends javax.swing.JFrame {
         );
 
         pack();
-        JumlahAntrian.setText(queueManager.size() + "");
-        PanggilNomorAntrian.setText(queueManager.peek() == -100 ? "-" : queueManager.peek() + "");
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProsesAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProsesAntrianActionPerformed
@@ -412,6 +423,10 @@ public class queue extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BatalkanAntrianActionPerformed
 
+    private void FinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FinishActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,6 +470,7 @@ public class queue extends javax.swing.JFrame {
     private javax.swing.JButton BatalkanAntrian;
     private javax.swing.JButton Enter;
     private javax.swing.JLabel EstimasiWaktu;
+    private javax.swing.JButton Finish;
     private javax.swing.JLabel JumlahAntrian;
     private javax.swing.JLabel Nama;
     private javax.swing.JLabel NomorAntrian;
