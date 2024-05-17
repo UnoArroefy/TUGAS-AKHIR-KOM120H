@@ -335,6 +335,9 @@ public class queue extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        JumlahAntrian.setText(queueManager.size() + "");
+        PanggilNomorAntrian.setText(queueManager.peek() == -100 ? "-" : queueManager.peek() + "");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -425,6 +428,12 @@ public class queue extends javax.swing.JFrame {
 
     private void FinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishActionPerformed
         // TODO add your handling code here:
+        try {
+            queueManager.finish();
+            jTextArea1.setText(queueManager.history());
+        } catch (Error e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_FinishActionPerformed
 
     /**

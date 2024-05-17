@@ -324,6 +324,22 @@ public class QueueManager {
         }
     }
 
+    public void finish() {
+        if (history.get(history.size() -1).getStatus() == Status.COMPLETED) {
+            throw new Error("Antrian sudah selesai");
+        }
+        if (tmpPriority == 0) {
+            throw new Error("Tidak ada antrian yang sedang diproses");
+        }
+        if (queue.size() == 0) {
+            Patient patient = hashMap.get(tmpPriority);
+            history.insert(new QueueHistory(patient, tmpPriority, Status.COMPLETED));
+            tmpPriority = 0;
+        } else if (queue.size() > 1) {
+            throw new Error("Queue is not empty");
+        }
+    }
+
     public int peek() {
         return queue.peek();
     }
